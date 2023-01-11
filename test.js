@@ -1,6 +1,7 @@
 const buttonVid = document.querySelector('#shareVid');
 const buttonImage = document.querySelector('#shareImage');
-const img =  document.querySelector('video');
+const video =  document.querySelector('video');
+const image = document.querySelector('img');
 
 const webShareSupported = 'canShare' in navigator;
 
@@ -43,11 +44,11 @@ const shareOrDownload = async (blob, fileName, title, text) => {
 };
 
 buttonVid.addEventListener('click', async () => {
-  const blob = await fetch(img.src).then(res => res.blob());
+  const blob = await fetch(video.src).then(res => res.blob());
   await shareOrDownload(blob, 'vid  .mp4', 'Cat in the snow', 'Getting cold feet…');
 });
 
 buttonImage.addEventListener('click', async () => {
-    const blob = await fetch(img.src).then(res => res.blob());
+    const blob = await fetch(image.src).then(res => res.blob());
     await shareOrDownload(blob, 'img  .jpg', 'Cat in the snow', 'PSVVV');
   });
