@@ -1,7 +1,7 @@
 const shareData = {
   title: 'MDN',
   text: 'Learn web development on MDN!',
-  url: 'https://developer.mozilla.org'
+  url: 'https://www.google.com/chrome/static/images/home-experiment/hero-img_desktop.png'
 }
 
 const btn = document.querySelector('button');
@@ -12,7 +12,9 @@ btn.addEventListener('click', async () => {
   try {
     await navigator.share(shareData);
     resultPara.textContent = 'MDN shared successfully';
+    console.log(suc6);
   } catch (err) {
     resultPara.textContent = `Error: ${err}`;
+    console.log(err);
   }
 });
