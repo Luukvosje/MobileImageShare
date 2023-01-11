@@ -1,29 +1,32 @@
 const output = document.getElementById('output')
-
-
+console.log("test");
 document.getElementById('share').addEventListener('click', async () => {
-
+    console.log("test");
 
     const files = 'https://brainport.s3.amazonaws.com/rendered_videos/2023/1/5/638085335677985230.mp4';
 
-    let response = await fetch('https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/640px-Google_Images_2015_logo.svg.png');
+    let response = await fetch('https://drm-zapworks.s3.eu-west-1.amazonaws.com/looop/videos/03_Frank_Lavrijsen_Clean.mp4');
     let data = await response.blob();
     let metadata = {
-      type: 'image/jpeg'
+      type: 'video/mp4'
     };
-    let file = new File([data], "test.jpg", metadata);
+    let file = new File([data], "test.mp4", metadata);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
     // ... do something with the file or return it
     
-    console.log(files);
+    console.log(file);
+    console.log(reader);
   
     if (!navigator.canShare) {
     output.textContent = `Your browser doesn't support the Web Share API.`;
     return
   }
-  if (navigator.canShare({file})) {
+  if (navigator.canShare) {
     try {
       await navigator.share({
-        file
+        url: "https://drm-zapworks.s3.eu-west-1.amazonaws.com/looop/videos/03_Frank_Lavrijsen_Clean.mp4",
       })
       output.textContent = 'Shared!'
     } catch (error) {
