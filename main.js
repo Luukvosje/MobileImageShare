@@ -6,13 +6,13 @@ const shareData = {
 
 const btn = document.querySelector('button');
 const resultPara = document.querySelector('.result');
-
+    console.log("test");
 // Share must be triggered by "user activation"
 btn.addEventListener('click', async () => {
   try {
     await navigator.share(shareData);
     resultPara.textContent = 'MDN shared successfully';
-    console.log(suc6);
+    console.log("test");
   } catch (err) {
     resultPara.textContent = `Error: ${err}`;
     console.log(err);
