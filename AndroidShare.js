@@ -1,10 +1,16 @@
-const buttonVid = document.querySelector('#shareVid');
-const buttonImage = document.querySelector('#shareImage');
+//-----------Dit zijn de twee variables van de knoppen-----------------//
+const buttonVid = document.querySelector('#shareVid');                  
+const buttonImage = document.querySelector('#shareImage');              
+//---------------------------------------------------------------------//
+
+//-----------Dit zijn de twee variables van de video en de image-------//
 const video =  document.querySelector('video');
 const image = document.querySelector('img');
+//---------------------------------------------------------------------//
 
+//checkt of je kan sharen//
 const webShareSupported = 'canShare' in navigator;
-
+//---- Dit is de functie die ervoor zorgt dat de src van de image/video word omgezet in file----//
 const shareOrDownload = async (blob, fileName, title, text) => {
   if (webShareSupported) {
     const data = {
@@ -43,12 +49,14 @@ const shareOrDownload = async (blob, fileName, title, text) => {
   a.click();
 };
 
+//Video Event Listener die video shared
 buttonVid.addEventListener('click', async () => {
   const blob = await fetch(video.src).then(res => res.blob());
-  await shareOrDownload(blob, 'vid  .mp4', 'Cat in the snow', 'Getting cold feet…');
+  await shareOrDownload(blob, 'video.mp4', '(TITLE)', '(EXTRA TEXT)');
 });
 
+//Image Event Listener die image shared
 buttonImage.addEventListener('click', async () => {
     const blob = await fetch(image.src).then(res => res.blob());
-    await shareOrDownload(blob, 'img  .jpg', 'Cat in the snow', 'PSVVV');
+    await shareOrDownload(blob, 'image.jpg', '(TITLE)', '(EXTRA TEXT)');
   });
